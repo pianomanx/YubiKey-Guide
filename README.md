@@ -2231,6 +2231,8 @@ Now connect networking.
 
 1. To use YubiKey on multiple computers, import the corresponding public keys, then confirm YubiKey is visible with `gpg --card-status`. Trust the imported public keys ultimately with `trust` and `5`, then `gpg --list-secret-keys` will show the correct and trusted key.
 
+1. When your Certify key is offline, *caveat emptor*: If you wish to [participate in keysigning parties](https://www.gnupg.org/gph/en/manual/x334.html), you'll find [signing others' imported public keys](https://gist.github.com/F21/b0e8c62c49dfab267ff1d0c6af39ab84) requires first setting up a secure enclave such as the ephemeral environment described above and importing your Certify key into that enclave. [A signing subkey cannot be used to sign others' imported public keys](https://security.stackexchange.com/questions/153057/possible-to-sign-an-imported-key-with-a-subkey-using-gpg).
+
 # Troubleshooting
 
 - Use `man gpg` to understand GnuPG options and command-line flags.
