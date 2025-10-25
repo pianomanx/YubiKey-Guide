@@ -1897,7 +1897,7 @@ gpg --keyserver hkps://keyserver.ubuntu.com:443 --send-key $KEYID
 Or if [uploading to keys.openpgp.org](https://keys.openpgp.org/about/usage):
 
 ```console
-gpg --send-key $KEYID | curl -T - https://keys.openpgp.org
+gpg --export $KEYID | curl -T - https://keys.openpgp.org
 ```
 
 The public key URL can also be added to YubiKey (based on [Shaw 2003](https://datatracker.ietf.org/doc/html/draft-shaw-openpgp-hkp-00)):
