@@ -215,7 +215,7 @@ Build an air-gapped NixOS LiveCD image:
 ref=$(git ls-remote https://github.com/drduh/Yubikey-Guide refs/heads/master | awk '{print $1}')
 
 nix build --experimental-features "nix-command flakes" \
-    github:drduh/YubiKey-Guide/$ref#nixosConfigurations.yubikeyLive.x86_64-linux.config.system.build.isoImage
+    github:drduh/YubiKey-Guide/$ref?dir=nix#nixosConfigurations.yubikeyLive.x86_64-linux.config.system.build.isoImage
 ```
 
 If you have this repository checked out:
@@ -229,7 +229,7 @@ nix flake update --commit-lock-file
 Build the image:
 
 ```console
-nix build --experimental-features "nix-command flakes" .#nixosConfigurations.yubikeyLive.x86_64-linux.config.system.build.isoImage
+nix build --experimental-features "nix-command flakes" nix#nixosConfigurations.yubikeyLive.x86_64-linux.config.system.build.isoImage
 ```
 
 Copy to USB drive:
