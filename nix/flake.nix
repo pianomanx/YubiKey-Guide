@@ -2,7 +2,7 @@
   description = "A Nix Flake for an xfce-based system with YubiKey setup";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
   };
 
   outputs = {
@@ -37,7 +37,7 @@
               '';
               shortcut = pkgs.makeDesktopItem {
                 name = "yubikey-guide";
-                icon = "${pkgs.yubikey-manager-qt}/share/icons/hicolor/128x128/apps/ykman.png";
+                icon = "${pkgs.yubioath-flutter}/share/icons/com.yubico.yubioath.png";
                 desktopName = "YubiKey Guide";
                 genericName = "Guide to using YubiKey for GnuPG and SSH";
                 comment = "Open YubiKey Guide in a reader program";
@@ -190,7 +190,6 @@
 
                 # Yubico's official tools
                 yubikey-manager
-                yubikey-manager-qt
                 yubikey-personalization
                 yubikey-personalization-gui
                 yubico-piv-tool
@@ -216,7 +215,7 @@
                 yubikeyGuide
 
                 # PDF and Markdown viewer
-                okular
+                kdePackages.okular
               ];
 
               # Disable networking so the system is air-gapped
@@ -265,7 +264,7 @@
                 ln -sf ${dicewareWebApp}/share/applications/${dicewareWebApp.name} ${desktopDir}
                 ln -sfT ${self} ${documentsDir}/YubiKey-Guide
               '';
-              system.stateVersion = "24.05";
+              system.stateVersion = "25.05";
             }
           )
         ];

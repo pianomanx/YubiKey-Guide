@@ -1,40 +1,23 @@
 {
   "nodes": {
-    "drduhConfig": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1719781410,
-        "narHash": "sha256-cmtAG7UQX7mVNoHHpVIqasfkjnO7VtBMcz8MJ7frO0k=",
-        "owner": "drduh",
-        "repo": "config",
-        "rev": "4eca229664d056737f1a097cdbdb10e5f247b0bc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "drduh",
-        "repo": "config",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1721226092,
-        "narHash": "sha256-UBvzVpo5sXSi2S/Av+t+Q+C2mhMIw/LBEZR+d6NMjws=",
+        "lastModified": 1761468971,
+        "narHash": "sha256-vY2OLVg5ZTobdroQKQQSipSIkHlxOTrIF1fsMzPh8w8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c716603a63aca44f39bef1986c13402167450e0a",
+        "rev": "78e34d1667d32d8a0ffc3eba4591ff256e80576e",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "nixos-24.05",
+        "ref": "nixos-25.05",
         "repo": "nixpkgs",
         "type": "github"
       }
     },
     "root": {
       "inputs": {
-        "drduhConfig": "drduhConfig",
         "nixpkgs": "nixpkgs"
       }
     }
