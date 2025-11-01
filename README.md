@@ -215,7 +215,7 @@ Build an air-gapped NixOS LiveCD image:
 ref=$(git ls-remote https://github.com/drduh/Yubikey-Guide refs/heads/master | awk '{print $1}')
 
 nix build --experimental-features "nix-command flakes" \
-    github:drduh/YubiKey-Guide/$ref#nixosConfigurations.yubikeyLive.x86_64-linux.config.system.build.isoImage
+    github:drduh/YubiKey-Guide/$ref?dir=nix#nixosConfigurations.yubikeyLive.x86_64-linux.config.system.build.isoImage
 ```
 
 If you have this repository checked out:
@@ -229,7 +229,7 @@ nix flake update --commit-lock-file
 Build the image:
 
 ```console
-nix build --experimental-features "nix-command flakes" .#nixosConfigurations.yubikeyLive.x86_64-linux.config.system.build.isoImage
+nix build --experimental-features "nix-command flakes" nix#nixosConfigurations.yubikeyLive.x86_64-linux.config.system.build.isoImage
 ```
 
 Copy to USB drive:
@@ -635,7 +635,7 @@ sudo mkfs.ext2 /dev/mapper/gnupg-secrets -L gnupg-$(date +%F)
 Mount the filesystem and copy the temporary GnuPG working directory with key materials:
 
 ```console
-sudo mkdir /mnt/encrypted-storage
+sudo mkdir -p /mnt/encrypted-storage
 
 sudo mount /dev/mapper/gnupg-secrets /mnt/encrypted-storage
 
@@ -717,7 +717,7 @@ $ doas newfs sd3i
 Mount the filesystem and copy the temporary directory with the keyring:
 
 ```console
-doas mkdir /mnt/encrypted-storage
+doas mkdir -p /mnt/encrypted-storage
 
 doas mount /dev/sd3i /mnt/encrypted-storage
 
@@ -760,7 +760,7 @@ Create a filesystem and export the public key:
 ```console
 sudo mkfs.ext2 /dev/sdc2
 
-sudo mkdir /mnt/public
+sudo mkdir -p /mnt/public
 
 sudo mount /dev/sdc2 /mnt/public
 
@@ -794,7 +794,7 @@ Create a filesystem and export the public key to it:
 ```console
 doas newfs sd2b
 
-doas mkdir /mnt/public
+doas mkdir -p /mnt/public
 
 doas mount /dev/sd2b /mnt/public
 
@@ -1052,7 +1052,7 @@ Mount the non-encrypted volume with the public key:
 **Debian/Ubuntu**
 
 ```console
-sudo mkdir /mnt/public
+sudo mkdir -p /mnt/public
 
 sudo mount /dev/sdc2 /mnt/public
 ```
@@ -1060,7 +1060,7 @@ sudo mount /dev/sdc2 /mnt/public
 **OpenBSD**
 
 ```console
-doas mkdir /mnt/public
+doas mkdir -p /mnt/public
 
 doas mount /dev/sd3i /mnt/public
 ```
@@ -1938,7 +1938,7 @@ Decrypt and mount the encrypted volume:
 ```console
 sudo cryptsetup luksOpen /dev/sdc1 gnupg-secrets
 
-sudo mkdir /mnt/encrypted-storage
+sudo mkdir -p /mnt/encrypted-storage
 
 sudo mount /dev/mapper/gnupg-secrets /mnt/encrypted-storage
 ```
@@ -1946,7 +1946,7 @@ sudo mount /dev/mapper/gnupg-secrets /mnt/encrypted-storage
 Mount the non-encrypted public partition:
 
 ```console
-sudo mkdir /mnt/public
+sudo mkdir -p /mnt/public
 
 sudo mount /dev/sdc2 /mnt/public
 ```
@@ -2045,7 +2045,7 @@ sudo cryptsetup luksClose gnupg-secrets
 Export the updated public key:
 
 ```console
-sudo mkdir /mnt/public
+sudo mkdir -p /mnt/public
 
 sudo mount /dev/sdc2 /mnt/public
 
