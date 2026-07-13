@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <!-- https://github.com/drduh/YubiKey-Guide/blob/master/templates/passphrase.html
      https://raw.githubusercontent.com/drduh/YubiKey-Guide/master/templates/passphrase.html
-     Save the raw file ^ then open in a browser to render and print -->
+     Open this file in a browser to render and print, then fill out offline.
+-->
 <html lang="en">
   <head>
   <meta charset="UTF-8">
@@ -12,32 +13,62 @@
   <title>credentials</title>
   <style>
     :root {
-      --color-dark: #000000;
-      --color-gray: #dedede;
+      --color-border: #000000;
+      --color-gray: #eeeeee;
+      --color-ink: #111111;
+      --color-paper: #ffffff;
     }
+    * {
+      box-sizing: border-box;
+    }
+    html,
     body {
-      color:        var(--color-dark);
-      font-family:  monospace;
+      color: var(--color-ink);
+      background: var(--color-paper);
+      font-family: ui-monospace, "Cascadia Mono", "DejaVu Sans Mono",
+        "Liberation Mono", monospace;
       font-size:    0.8rem;
       font-variant: small-caps;
       text-align:   center;
     }
-    td {
-      border:       0.05rem solid var(--color-dark);
-      height:       1rem;
-      min-width:    1rem;
+    .sheet {
+      border: 0.35mm dashed var(--color-ink);
+      margin: 0 auto;
+      overflow: hidden;
+      padding: 4mm;
+      width: 200mm;
     }
-    td.alt, tr.alt {
-      background:   var(--color-gray);
+    td {
+      border: 0.05rem solid var(--color-border);
+      height: 1.6rem;
+      min-width: 1rem;
+    }
+    td.alt,
+    tr.alt {
+      background: var(--color-gray);
+    }
+    .instruction {
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    @media print {
+      *,
+      *::before,
+      *::after {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
     }
   </style>
 </head>
 <body>
+<main class="sheet">
   <table>
   <colgroup span="38" width="20"></colgroup>
   <tr>
     <td></td>
     <td class="alt" colspan="10">date (yyyy-mm-dd)</td>
+    <td></td>
     <td></td>
     <td></td>
     <td></td>
@@ -63,6 +94,7 @@
     <td></td>
     <td></td>
     <td></td>
+    <td></td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -89,6 +121,7 @@
     <td></td>
   </tr>
   <tr>
+    <td></td>
     <td></td>
     <td></td>
     <td></td>
@@ -134,6 +167,7 @@
     <td></td>
     <td></td>
     <td></td>
+    <td></td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -173,43 +207,6 @@
     <td></td>
     <td></td>
     <td></td>
-    <td>0</td>
-    <td>1</td>
-    <td>2</td>
-    <td>3</td>
-    <td>4</td>
-    <td>5</td>
-    <td>6</td>
-    <td>7</td>
-    <td>8</td>
-    <td>9</td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td>0</td>
-    <td>1</td>
-    <td>2</td>
-    <td>3</td>
-    <td>4</td>
-    <td>5</td>
-    <td>6</td>
-    <td>7</td>
-    <td>8</td>
-    <td>9</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td>_</td>
-    <td>_</td>
-    <td>_</td>
-    <td>_</td>
-    <td>_</td>
-    <td>_</td>
-    <td>_</td>
-    <td>_</td>
-    <td></td>
-    <td></td>
     <td></td>
     <td>0</td>
     <td>1</td>
@@ -237,6 +234,46 @@
     <td></td>
   </tr>
   <tr>
+    <td></td>
+    <td>_</td>
+    <td>_</td>
+    <td>_</td>
+    <td>_</td>
+    <td>_</td>
+    <td>_</td>
+    <td>_</td>
+    <td>_</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+    <td>7</td>
+    <td>8</td>
+    <td>9</td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td>0</td>
+    <td>1</td>
+    <td>2</td>
+    <td>3</td>
+    <td>4</td>
+    <td>5</td>
+    <td>6</td>
+    <td>7</td>
+    <td>8</td>
+    <td>9</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
     <td></td>
     <td></td>
     <td></td>
@@ -282,6 +319,7 @@
     <td></td>
     <td></td>
     <td></td>
+    <td></td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -324,6 +362,7 @@
     <td></td>
     <td></td>
     <td></td>
+    <td></td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -351,13 +390,19 @@
   </tr>
 
   <!-- blank space row -->
-  <tr class="alt">
-    <td colspan="40">for each passphrase character, mark corresponding column on sequential row, then fold inward and tamper seal</td>
+  <tr class="instruction">
+    <td colspan="40">
+      <p>
+      for each passphrase character,
+      mark corresponding column on sequential row,
+      then fold inward and tamper seal
+      </p>
+    </td>
   </tr>
 
   <!-- passphrase rows -->
   <tr>
-    <td>-</td>
+    <th scope="row">01</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -384,6 +429,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -394,10 +440,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">01</th>
   </tr>
   <tr class="alt">
-    <td>-</td>
+    <th scope="row">02</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -424,6 +470,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -434,10 +481,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">02</th>
   </tr>
   <tr>
-    <td>-</td>
+    <th scope="row">03</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -464,6 +511,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -474,10 +522,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">03</th>
   </tr>
   <tr class="alt">
-    <td>-</td>
+    <th scope="row">04</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -504,6 +552,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -514,10 +563,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">04</th>
   </tr>
   <tr>
-    <td>-</td>
+    <th scope="row">05</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -544,6 +593,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -554,10 +604,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">05</th>
   </tr>
   <tr class="alt">
-    <td>-</td>
+    <th scope="row">06</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -584,6 +634,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -594,10 +645,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">06</th>
   </tr>
   <tr>
-    <td>-</td>
+    <th scope="row">07</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -624,6 +675,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -634,10 +686,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">07</th>
   </tr>
   <tr class="alt">
-    <td>-</td>
+    <th scope="row">08</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -664,6 +716,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -674,10 +727,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">08</th>
   </tr>
   <tr>
-    <td>-</td>
+    <th scope="row">09</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -704,6 +757,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -714,10 +768,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">09</th>
   </tr>
   <tr class="alt">
-    <td>-</td>
+    <th scope="row">10</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -744,6 +798,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -754,10 +809,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">10</th>
   </tr>
   <tr>
-    <td>-</td>
+    <th scope="row">11</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -784,6 +839,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -794,10 +850,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">11</th>
   </tr>
   <tr class="alt">
-    <td>-</td>
+    <th scope="row">12</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -824,6 +880,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -834,10 +891,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">12</th>
   </tr>
   <tr>
-    <td>-</td>
+    <th scope="row">13</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -864,6 +921,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -874,10 +932,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">13</th>
   </tr>
   <tr class="alt">
-    <td>-</td>
+    <th scope="row">14</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -904,6 +962,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -914,10 +973,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">14</th>
   </tr>
   <tr>
-    <td>-</td>
+    <th scope="row">15</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -944,6 +1003,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -954,10 +1014,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">15</th>
   </tr>
   <tr class="alt">
-    <td>-</td>
+    <th scope="row">16</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -984,6 +1044,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -994,10 +1055,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">16</th>
   </tr>
   <tr>
-    <td>-</td>
+    <th scope="row">17</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -1024,6 +1085,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -1034,10 +1096,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">17</th>
   </tr>
   <tr class="alt">
-    <td>-</td>
+    <th scope="row">18</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -1064,6 +1126,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -1074,10 +1137,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">18</th>
   </tr>
   <tr>
-    <td>-</td>
+    <th scope="row">19</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -1104,6 +1167,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -1114,10 +1178,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">19</th>
   </tr>
   <tr class="alt">
-    <td>-</td>
+    <th scope="row">20</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -1144,6 +1208,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -1154,10 +1219,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">20</th>
   </tr>
   <tr>
-    <td>-</td>
+    <th scope="row">21</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -1184,6 +1249,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -1194,10 +1260,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">21</th>
   </tr>
   <tr class="alt">
-    <td>-</td>
+    <th scope="row">22</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -1224,6 +1290,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -1234,10 +1301,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">22</th>
   </tr>
   <tr>
-    <td>-</td>
+    <th scope="row">23</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -1264,6 +1331,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -1274,10 +1342,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">23</th>
   </tr>
   <tr class="alt">
-    <td>-</td>
+    <th scope="row">24</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -1304,6 +1372,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -1314,10 +1383,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">24</th>
   </tr>
   <tr>
-    <td>-</td>
+    <th scope="row">25</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -1344,6 +1413,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -1354,10 +1424,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">25</th>
   </tr>
   <tr class="alt">
-    <td>-</td>
+    <th scope="row">26</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -1384,6 +1454,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -1394,10 +1465,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">26</th>
   </tr>
   <tr>
-    <td>-</td>
+    <th scope="row">27</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -1424,6 +1495,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -1434,10 +1506,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">27</th>
   </tr>
   <tr class="alt">
-    <td>-</td>
+    <th scope="row">28</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -1464,6 +1536,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -1474,10 +1547,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">28</th>
   </tr>
   <tr>
-    <td>-</td>
+    <th scope="row">29</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -1504,6 +1577,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -1514,10 +1588,10 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">29</th>
   </tr>
   <tr class="alt">
-    <td>-</td>
+    <th scope="row">30</th>
     <td>A</td>
     <td>B</td>
     <td>C</td>
@@ -1544,6 +1618,7 @@
     <td>X</td>
     <td>Y</td>
     <td>Z</td>
+    <td>-</td>
     <td>0</td>
     <td>1</td>
     <td>2</td>
@@ -1554,8 +1629,9 @@
     <td>7</td>
     <td>8</td>
     <td>9</td>
-    <td></td>
+    <th scope="row">30</th>
   </tr>
-</table>
+  </table>
+</main>
 </body>
 </html>
