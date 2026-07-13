@@ -1,32 +1,35 @@
+<!DOCTYPE html>
 <!-- https://github.com/drduh/YubiKey-Guide/blob/master/templates/passphrase.html
      https://raw.githubusercontent.com/drduh/YubiKey-Guide/master/templates/passphrase.html
      Save the raw file ^ then open in a browser to render and print -->
-<!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="github.com/drduh/YubiKey-Guide">
+  <meta name="viewport"
+	   content="width=device-width, initial-scale=1">
+  <meta name="description"
+	   content="Passphrase template from github.com/drduh/YubiKey-Guide">
   <title>credentials</title>
-  <style type="text/css">
-  :root {
-    --color-dark: #000000;
-    --color-gray: #dedede;
-  }
-  body {
-    color:        var(--color-dark);
-    font-family:  monospace;
-    font-size:    0.8rem;
-    font-variant: small-caps;
-    text-align:   center;
-  }
-  td {
-    border:       0.05rem solid var(--color-dark);
-    height:       1rem;
-  }
-  td.alt, tr.alt {
-    background:   var(--color-gray);
-  }
+  <style>
+    :root {
+      --color-dark: #000000;
+      --color-gray: #dedede;
+    }
+    body {
+      color:        var(--color-dark);
+      font-family:  monospace;
+      font-size:    0.8rem;
+      font-variant: small-caps;
+      text-align:   center;
+    }
+    td {
+      border:       0.05rem solid var(--color-dark);
+      height:       1rem;
+      min-width:    1rem;
+    }
+    td.alt, tr.alt {
+      background:   var(--color-gray);
+    }
   </style>
 </head>
 <body>
@@ -50,13 +53,13 @@
     <td>2</td>
     <td>0</td>
     <td>2</td>
-    <td>5</td>
+    <td>6</td>
     <td>-</td>
-    <td>_</td>
-    <td>_</td>
+    <td> </td>
+    <td> </td>
     <td>-</td>
-    <td>_</td>
-    <td>_</td>
+    <td> </td>
+    <td> </td>
     <td></td>
     <td></td>
     <td></td>
@@ -349,7 +352,7 @@
 
   <!-- blank space row -->
   <tr class="alt">
-    <td colspan="40">for each char in passphrase, mark corresponding column on sequential row, then fold inward and tamper seal</td>
+    <td colspan="40">for each passphrase character, mark corresponding column on sequential row, then fold inward and tamper seal</td>
   </tr>
 
   <!-- passphrase rows -->
