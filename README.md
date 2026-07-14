@@ -70,19 +70,19 @@ Several portable storage devices (such as microSD cards) for storing encrypted b
 
 # Prepare environment
 
-A dedicated, secure operating environment is recommended to generate cryptographic keys.
+A dedicated and hardened operating environment should be used to generate materials.
 
-The following is a general ranking of environments least to most hospitable to generating materials:
+The following is a ranked list of least to most defensible environments to consider:
 
 1. Public, shared or other computer owned by someone else
 1. Daily-use personal operating system with unrestricted network access
-1. Virtualized operating system with limited capabilities (using [virt-manager](https://virt-manager.org/), VirtualBox or VMware, for example)
+1. Virtualized system with limited capabilities (using [virt-manager](https://virt-manager.org/), VirtualBox or VMware, for example)
 1. Dedicated and hardened [Debian](https://www.debian.org/) or [OpenBSD](https://www.openbsd.org/) installation
 1. Ephemeral [Debian Live](https://www.debian.org/CD/live/) or [Tails](https://tails.boum.org/index.en.html) booted without primary storage attached
 1. Hardened hardware and firmware (e.g., [Coreboot](https://www.coreboot.org/), [Intel ME removed](https://github.com/corna/me_cleaner))
 1. Air-gapped system without network capabilities, preferably ARM-based Raspberry Pi or other architecturally diverse equivalent
 
-Debian Live is used in this guide to balance usability and security, with some additional instructions for OpenBSD.
+Debian Live is used in this guide to balance usability and security, with additional instructions for OpenBSD.
 
 Download the latest Debian Live image and signature files:
 
@@ -194,12 +194,8 @@ doas pkg_add gnupg pcsc-tools
 Download and install [Homebrew](https://brew.sh/) and the following packages:
 
 ```console
-brew install \
-    gnupg yubikey-personalization ykman pinentry-mac wget
+brew install gnupg yubikey-personalization ykman pinentry-mac wget
 ```
-
-> [!NOTE]
-> An additional Python package dependency may need to be installed to use [`ykman`](https://support.yubico.com/support/solutions/articles/15000012643-yubikey-manager-cli-ykman-user-guide) - `pip install yubikey-manager`
 
 Or using [MacPorts](https://www.macports.org/install.php), install the following packages:
 
@@ -550,9 +546,12 @@ The following process is recommended to be repeated several times on multiple po
 > [ext2](https://en.wikipedia.org/wiki/Ext2) volumes (without encryption) can be mounted on Linux and OpenBSD.
 > Use [FAT32](https://en.wikipedia.org/wiki/Fat32) or [NTFS](https://en.wikipedia.org/wiki/Ntfs) volumes for macOS and Windows compatibility instead.
 
+> [!CAUTION]
+> Confirm the destination (`of`) before issuing `dd` commands as they are destructive! This guide uses `/dev/sdc` - this value may be different on your system.
+
 **Linux**
 
-Attach a portable storage device and check its label, in this case `/dev/sdc`:
+Attach a portable storage device and confirm its label - in this example `/dev/sdc`:
 
 ```console
 $ sudo dmesg | tail
@@ -562,9 +561,6 @@ sd 2:0:0:0: [sdc] Attached SCSI removable disk
 $ sudo fdisk -l /dev/sdc
 Disk /dev/sdc: 14.9 GiB, 15931539456 bytes, 31116288 sectors
 ```
-
-> [!CAUTION]
-> Confirm the destination (`of`) before issuing the following command - it is destructive! This guide uses `/dev/sdc` throughout, but this value may be different on your system.
 
 Zero the header to prepare for encryption:
 
@@ -1834,7 +1830,7 @@ YubiKey can be used to decrypt and sign emails and attachments using [Thunderbir
 
 ### Thunderbird
 
-Follow [instructions on the mozilla wiki](https://wiki.mozilla.org/Thunderbird:OpenPGP:Smartcards#Configure_an_email_account_to_use_an_external_GnuPG_key) to setup your YubiKey with your thunderbird client using the external gpg provider.
+Follow [instructions on the mozilla wiki](https://wiki.mozilla.org/Thunderbird:OpenPGP:Smartcards#Configure_an_email_account_to_use_an_external_GnuPG_key) to setup YubiKey with Thunderbird using the external GPG provider.
 
 > [!NOTE]
 > Thunderbird will [fail](https://github.com/drduh/YubiKey-Guide/issues/448) to decrypt emails if the ASCII `armor` option is enabled in `gpg.conf`. If you see the error `gpg: [don't know]: invalid packet (ctb=2d)` or `message cannot be decrypted (there are unknown problems with this encrypted message)` simply remove this option.
@@ -1961,7 +1957,7 @@ Copy the original private key materials (after updating the encrypted storage di
 ```console
 export GNUPGHOME=$(mktemp -d -t $(date +%Y.%m.%d)-XXXX)
 
-cp -avi /mnt/encrypted-storage/2026.12.31-AbCd/* $GNUPGHOME/
+cp -avi /mnt/encrypted-storage/2026.07.01-AbCd/* $GNUPGHOME/
 ```
 
 Confirm the identity is available, set the key id and fingerprint:
@@ -2208,9 +2204,14 @@ sudo nft -f ./nftables.conf
 If you want to look at every process's command line arguments you can use `ps axjf`. This prints a process tree which may have a large number of lines but should be easy to read on a live image or fresh install.
 
 ```bash
-sudo ss -anp -A inet    # Dump all network state information
-ps axjf                 # List all processes in a process tree
-ps aux                  # BSD syntax, list all processes but no process tree
+# Dump network state information
+sudo ss -anp -A inet
+
+# List all processes in a process tree
+ps axjf
+
+# BSD syntax, list all processes but no process tree
+ps aux
 ```
 
 If you find any additional processes listening on the network that aren't needed, take note and disable them with one of the following:
